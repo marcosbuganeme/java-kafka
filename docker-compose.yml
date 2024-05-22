@@ -9,6 +9,8 @@ services:
       - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - kafka-net
 
   kafka:
     image: docker.io/bitnami/kafka:3.4
