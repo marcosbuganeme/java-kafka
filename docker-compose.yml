@@ -38,6 +38,8 @@ services:
     depends_on:
       - kafka
       - zookeeper
+    networks:
+      - kafka-net
 
 volumes:
   zookeeper_data:
