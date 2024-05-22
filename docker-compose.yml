@@ -11,6 +11,11 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
     networks:
       - kafka-net
+    healthcheck:
+      test: ["CMD", "echo", "ruok", "|", "nc", "localhost", "2181"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   kafka:
     image: docker.io/bitnami/kafka:3.4
