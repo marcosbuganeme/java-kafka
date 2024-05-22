@@ -56,14 +56,62 @@ Select the following dependencies in the Spring Initializr for the project:
 6. **Spring Boot Actuator**: For application monitoring and metrics (optional).
 7. **Spring Security**: If API security is needed (optional).
 
+## Design Clean Architecture
+
+src
+├── main
+│   ├── java
+│   │   └── br
+│   │       └── com
+│   │           └── devdojo
+│   │               ├── application
+│   │               │   ├── service
+│   │               │   │   └── TransactionService.java
+│   │               │   └── usecase
+│   │               │       └── MonitorTransactions.java
+│   │               ├── config
+│   │               │   └── KafkaConfig.java
+│   │               ├── domain
+│   │               │   ├── model
+│   │               │   │   └── Transaction.java
+│   │               │   ├── repository
+│   │               │   │   └── TransactionRepository.java
+│   │               │   └── service
+│   │               │       └── FraudDetectionService.java
+│   │               ├── infrastructure
+│   │               │   ├── consumer
+│   │               │   │   └── TransactionConsumer.java
+│   │               │   ├── producer
+│   │               │   │   └── TransactionProducer.java
+│   │               │   └── repository
+│   │               │       └── JpaTransactionRepository.java
+│   │               └── web
+│   │                   ├── controller
+│   │                   │   └── TransactionController.java
+│   │                   └── dto
+│   │                       └── TransactionDto.java
+│   └── resources
+│       └── application.properties
+└── test
+    └── java
+        └── br
+            └── com
+                └── devdojo
+                    └── transactional
+                        ├── TransactionServiceTest.java
+                        ├── FraudDetectionServiceTest.java
+                        └── TransactionControllerTest.java
+
+
+
 ## How to Use
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/marcosbuganeme/java-kafka.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd real-time-transaction-monitor
+   cd java-kafka
    ```
 3. Build the project:
    ```bash
@@ -84,9 +132,9 @@ spring.kafka.consumer.group-id=real-time-transaction-monitor-group
 spring.kafka.consumer.auto-offset-reset=earliest
 
 # JPA Properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/transactions_db
-spring.datasource.username=yourusername
-spring.datasource.password=yourpassword
+spring.datasource.url=jdbc:postgresql://localhost:5432/monitor_transactions_db
+spring.datasource.username=user
+spring.datasource.password=123456
 spring.jpa.hibernate.ddl-auto=update
 ```
 
