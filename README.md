@@ -11,7 +11,50 @@ The Real-Time Transaction Monitor is a system designed to monitor financial tran
 
 ## Tools and Technologies
 - **Java**: For backend development and data processing.
-- **Apache Kafka**: For real-time data ingestion and processing.
+- **Apache Kafka**: For real-time data ingestion and processing.src
+├── main
+│   ├── java
+│   │   └── br
+│   │       └── com
+│   │           └── devdojo
+│   │               ├── application
+│   │               │   ├── service
+│   │               │   │   └── TransactionService.java
+│   │               │   └── usecase
+│   │               │       └── MonitorTransactions.java
+│   │               ├── config
+│   │               │   └── KafkaConfig.java
+│   │               ├── domain
+│   │               │   ├── model
+│   │               │   │   └── Transaction.java
+│   │               │   ├── repository
+│   │               │   │   └── TransactionRepository.java
+│   │               │   └── service
+│   │               │       └── FraudDetectionService.java
+│   │               ├── infrastructure
+│   │               │   ├── consumer
+│   │               │   │   └── TransactionConsumer.java
+│   │               │   ├── producer
+│   │               │   │   └── TransactionProducer.java
+│   │               │   └── repository
+│   │               │       └── JpaTransactionRepository.java
+│   │               └── web
+│   │                   ├── controller
+│   │                   │   └── TransactionController.java
+│   │                   └── dto
+│   │                       └── TransactionDto.java
+│   └── resources
+│       └── application.properties
+└── test
+    └── java
+        └── br
+            └── com
+                └── devdojo
+                    └── transactional
+                        ├── TransactionServiceTest.java
+                        ├── FraudDetectionServiceTest.java
+                        └── TransactionControllerTest.java
+
 - **PostgreSQL**: For data storage and querying.
 - **Spring Boot**: For rapid application development.
 - **Kafka Streams or Kafka Connect**: To facilitate data processing and integration.
@@ -58,51 +101,7 @@ Select the following dependencies in the Spring Initializr for the project:
 
 ## Design Clean Architecture
 
-src
-├── main
-│   ├── java
-│   │   └── br
-│   │       └── com
-│   │           └── devdojo
-│   │               ├── application
-│   │               │   ├── service
-│   │               │   │   └── TransactionService.java
-│   │               │   └── usecase
-│   │               │       └── MonitorTransactions.java
-│   │               ├── config
-│   │               │   └── KafkaConfig.java
-│   │               ├── domain
-│   │               │   ├── model
-│   │               │   │   └── Transaction.java
-│   │               │   ├── repository
-│   │               │   │   └── TransactionRepository.java
-│   │               │   └── service
-│   │               │       └── FraudDetectionService.java
-│   │               ├── infrastructure
-│   │               │   ├── consumer
-│   │               │   │   └── TransactionConsumer.java
-│   │               │   ├── producer
-│   │               │   │   └── TransactionProducer.java
-│   │               │   └── repository
-│   │               │       └── JpaTransactionRepository.java
-│   │               └── web
-│   │                   ├── controller
-│   │                   │   └── TransactionController.java
-│   │                   └── dto
-│   │                       └── TransactionDto.java
-│   └── resources
-│       └── application.properties
-└── test
-    └── java
-        └── br
-            └── com
-                └── devdojo
-                    └── transactional
-                        ├── TransactionServiceTest.java
-                        ├── FraudDetectionServiceTest.java
-                        └── TransactionControllerTest.java
-
-
+![Design Architecture](assets/design-architecture.png)
 
 ## How to Use
 1. Clone the repository:
