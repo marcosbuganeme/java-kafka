@@ -34,3 +34,7 @@ services:
     depends_on:
       - kafka
       - zookeeper
+
+volumes:
+  zookeeper_data:
+    driver: local
