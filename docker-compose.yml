@@ -29,6 +29,11 @@ services:
       - zookeeper
     networks:
       - kafka-net
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "kafka:9092"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
