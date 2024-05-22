@@ -2,59 +2,18 @@
 # Real-Time Transaction Monitor
 
 ## Description
+
 The Real-Time Transaction Monitor is a system designed to monitor financial transactions in real-time. It uses Apache Kafka for real-time data ingestion, PostgreSQL for transaction storage, and Java (with Spring Boot) for data processing and analysis.
 
 ## Features
+
 - Fraud detection
 - Real-time alerts
 - Monitoring dashboard
 
 ## Tools and Technologies
 - **Java**: For backend development and data processing.
-- **Apache Kafka**: For real-time data ingestion and processing.src
-├── main
-│   ├── java
-│   │   └── br
-│   │       └── com
-│   │           └── devdojo
-│   │               ├── application
-│   │               │   ├── service
-│   │               │   │   └── TransactionService.java
-│   │               │   └── usecase
-│   │               │       └── MonitorTransactions.java
-│   │               ├── config
-│   │               │   └── KafkaConfig.java
-│   │               ├── domain
-│   │               │   ├── model
-│   │               │   │   └── Transaction.java
-│   │               │   ├── repository
-│   │               │   │   └── TransactionRepository.java
-│   │               │   └── service
-│   │               │       └── FraudDetectionService.java
-│   │               ├── infrastructure
-│   │               │   ├── consumer
-│   │               │   │   └── TransactionConsumer.java
-│   │               │   ├── producer
-│   │               │   │   └── TransactionProducer.java
-│   │               │   └── repository
-│   │               │       └── JpaTransactionRepository.java
-│   │               └── web
-│   │                   ├── controller
-│   │                   │   └── TransactionController.java
-│   │                   └── dto
-│   │                       └── TransactionDto.java
-│   └── resources
-│       └── application.properties
-└── test
-    └── java
-        └── br
-            └── com
-                └── devdojo
-                    └── transactional
-                        ├── TransactionServiceTest.java
-                        ├── FraudDetectionServiceTest.java
-                        └── TransactionControllerTest.java
-
+- **Apache Kafka**: For real-time data ingestion and processing.
 - **PostgreSQL**: For data storage and querying.
 - **Spring Boot**: For rapid application development.
 - **Kafka Streams or Kafka Connect**: To facilitate data processing and integration.
