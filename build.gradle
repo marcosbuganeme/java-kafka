@@ -5,10 +5,10 @@ plugins {
 }
 
 group = 'br.com.devdojo'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+	sourceCompatibility = '21'
 }
 
 configurations {
