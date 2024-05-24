@@ -1,21 +1,32 @@
-# Use uma imagem base mais leve do Java 22
-FROM openjdk:22-jdk-slim
+# Etapa 1: Construção
+FROM gradle:8.7-jdk-slim AS builder
 
 # Define o diretório de trabalho
 WORKDIR /app
 
-# Copia o arquivo pom.xml e instala dependências (assumindo uso do Maven)
-COPY pom.xml .
-RUN mvn dependency:go-offline
+# Copia os arquivos de build (build.gradle, settings.gradle, etc.)
+COPY build.gradle settings.gradle ./
 
-# Copia os arquivos restantes do projeto
+# Faz o download das dependências
+RUN gradle build --no-daemon || return 0
+
+# Copia o código fonte restante
 COPY . .
 
 # Compila o projeto e cria o arquivo JAR
-RUN mvn package
+RUN gradle build --no-daemon
+
+# Etapa 2: Execução
+FROM openjdk:21-jdk-slim
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia o JAR da etapa de construção
+COPY --from=builder /app/build/libs/*.jar app.jar
 
 # Expõe a porta que a aplicação Spring Boot usa
 EXPOSE 8081
 
 # Comando para executar a aplicação
-ENTRYPOINT ["java", "-jar", "target/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
