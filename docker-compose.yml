@@ -1,6 +1,24 @@
 version: "3.8"
 
 services:
+  backend:
+    build: .
+    depends_on:
+      - kafka
+      - zookeeper
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    ports:
+      - "8081:8081"
+    restart: on-failure
+    networks:
+      - kafka-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8081/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.9
     environment:
