@@ -1,8 +1,3 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'br.com.devdojo.java-kafka' is invalid and this project uses 'br.com.devdojo.javakafka' instead.
-
 # Getting Started
 
 ### Reference Documentation
