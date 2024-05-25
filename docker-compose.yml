@@ -26,6 +26,7 @@ services:
 
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.9
+    container_name: zookeeper
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     ports:
