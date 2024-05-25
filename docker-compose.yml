@@ -92,3 +92,5 @@ volumes:
 networks:
   kafka-net:
     driver: bridge
+  postgres-net:
+    driver: bridge
