@@ -83,6 +83,19 @@ services:
       timeout: 10s
       retries: 3
 
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_DB: monitor_transactions_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - postgres-net
+
 volumes:
   zookeeper_data:
     driver: local
