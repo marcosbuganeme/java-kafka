@@ -1,8 +1,9 @@
 version: "3.8"
 
 services:
-  backend:
+  backend-java:
     build: .
+    container_name: backend-java
     depends_on:
       - kafka
       - zookeeper
@@ -14,7 +15,6 @@ services:
     networks:
       - kafka-net
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8081/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -27,7 +27,6 @@ services:
       - "2181:2181"
     restart: on-failure
     healthcheck:
-      test: ["CMD", "echo", "ruok", "|", "nc", "localhost", "2181"]
       interval: 30s
       timeout: 10s
       retries: 3
