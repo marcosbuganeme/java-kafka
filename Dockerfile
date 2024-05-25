@@ -1,5 +1,5 @@
 # Etapa 1: Construção
-FROM gradle:8.7-jdk-slim AS builder
+FROM gradle:8.7-jdk21-jammy as builder
 
 # Define o diretório de trabalho
 WORKDIR /app
