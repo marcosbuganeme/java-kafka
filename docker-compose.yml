@@ -19,6 +19,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    volumes:
+      - "backend_data:/app"
 
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.9
