@@ -88,6 +88,8 @@ volumes:
     driver: local
   kafka_data:
     driver: local
+  postgres_data:
+    driver: local
 
 networks:
   kafka-net:
